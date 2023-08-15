@@ -22,6 +22,11 @@ class User extends CI_Controller {
       $type = intval($this->input->post("type"));
       $this->db->query("UPDATE `criterias` SET `name`='".$name."', `type`=".$type." WHERE `id`=".$criteriaID);
     }
+    
+  public function delete_criteria() {
+        $criteriaID = intval($this->input->post('criteria_id'));
+        $this->db->query("DELETE FROM `criterias` WHERE `id`=".$criteriaID);
+      }
   
   public function get_criteria_values() {
     $criteriaID = intval($this->input->post('criteria_id'));
@@ -46,4 +51,9 @@ class User extends CI_Controller {
         $weight = intval($this->input->post('weight'));
         $this->db->query("UPDATE `criteria_values` SET `value`='".$value."', `weight`=".$weight." WHERE `id`=".$id);
       }
+      
+  public function delete_criteria_value() {
+          $id = intval($this->input->post('id'));
+          $this->db->query("DELETE FROM `criteria_values` WHERE `id`=".$id);
+        }
 }
