@@ -34,6 +34,11 @@ class User extends CI_Controller {
     echo json_encode($values);
   }
   
+  public function get_all_criteria_values() {
+      $values = $this->db->query("SELECT * FROM `criteria_values` ORDER BY `value`")->result_array();
+      echo json_encode($values);
+    }
+  
   public function add_criteria_value() {
       $criteriaID = intval($this->input->post('criteria_id'));
       $value = $this->input->post('value');
