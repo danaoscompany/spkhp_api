@@ -20,7 +20,7 @@ class User extends CI_Controller {
       $criteriaID = intval($this->input->post('criteria_id'));
       $name = $this->input->post('name');
       $type = intval($this->input->post("type"));
-      $this->db->query("UPDATE `criterias` SET `name`='".$name."' WHERE `id`=".$criteriaID);
+      $this->db->query("UPDATE `criterias` SET `name`='".$name."', `type`=".$type." WHERE `id`=".$criteriaID);
     }
   
   public function get_criteria_values() {
