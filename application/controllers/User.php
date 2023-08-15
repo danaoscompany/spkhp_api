@@ -118,4 +118,9 @@ class User extends CI_Controller {
                         ));
       }
     }
+    
+  public function delete_product() {
+    $id = intval($this->input->post('id'));
+    $this->db->query("DELETE FROM `products` WHERE `id`=".$id);
+  }
 }
