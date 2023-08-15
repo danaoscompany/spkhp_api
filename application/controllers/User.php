@@ -56,4 +56,33 @@ class User extends CI_Controller {
           $id = intval($this->input->post('id'));
           $this->db->query("DELETE FROM `criteria_values` WHERE `id`=".$id);
         }
+        
+  public function get_products() {
+    $products = $this->db->query("SELECT * FROM `products` ORDER BY `name`")->result_array();
+    echo json_encode($products);
+  }
+  
+  public function add_product() {
+    $name = $this->input->post('name');
+    $details = $this->input->post('details');
+    $description = $this->input->post('description');
+    $criterias = $this->input->post('criterias');
+    $config['upload_path'] = './userdata/'; 
+    $config['allowed_types'] = 'gif|jpg|png'; 
+    $config['max_size']      = 100; 
+    $config['max_width']     = 1024; 
+    $config['max_height']    = 768;  
+    $this->load->library('upload', $config);
+    if ($this->upload->do_upload('file')) {
+      $this->db->insert("products", array(
+        "name" => $name,
+        "details" => $details,
+        "description" => $description,
+        "photopath" => $this->upload->data()['filename'],
+        "criterias" => $criterias
+      ));
+    } else {
+      echo json_encode($this->upload->display_errors());
+    }
+  }
 }
