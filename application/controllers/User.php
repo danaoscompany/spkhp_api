@@ -76,7 +76,7 @@ class User extends CI_Controller {
         "name" => $name,
         "details" => $details,
         "description" => $description,
-        "photopath" => $this->upload->data()['filename'],
+        "photopath" => $this->upload->data()['file_name'],
         "criterias" => $criterias
       ));
     } else {
@@ -102,7 +102,7 @@ class User extends CI_Controller {
                   "name" => $name,
                   "details" => $details,
                   "description" => $description,
-                  "photopath" => $this->upload->data()['filename'],
+                  "photopath" => $this->upload->data()['file_name'],
                   "criterias" => $criterias
                 ));
               } else {
