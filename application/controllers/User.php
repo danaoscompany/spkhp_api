@@ -24,7 +24,7 @@ class User extends CI_Controller {
     }
     
   public function delete_criteria() {
-        $criteriaID = intval($this->input->post('criteria_id'));
+        $criteriaID = intval($this->input->post('id'));
         $this->db->query("DELETE FROM `criterias` WHERE `id`=".$criteriaID);
       }
   
