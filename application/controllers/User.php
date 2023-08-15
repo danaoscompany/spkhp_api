@@ -19,6 +19,7 @@ class User extends CI_Controller {
   public function update_criteria() {
       $criteriaID = intval($this->input->post('criteria_id'));
       $name = $this->input->post('name');
+      $type = intval($this->input->post("type"));
       $this->db->query("UPDATE `criterias` SET `name`='".$name."' WHERE `id`=".$criteriaID);
     }
   
