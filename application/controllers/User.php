@@ -68,10 +68,8 @@ class User extends CI_Controller {
     $description = $this->input->post('description');
     $criterias = $this->input->post('criterias');
     $config['upload_path'] = './userdata/'; 
-    $config['allowed_types'] = 'gif|jpg|png'; 
-    $config['max_size']      = 100; 
-    $config['max_width']     = 1024; 
-    $config['max_height']    = 768;  
+    $config['allowed_types'] = '*'; 
+    $config['max_size']      = 102400; 
     $this->load->library('upload', $config);
     if ($this->upload->do_upload('file')) {
       $this->db->insert("products", array(
@@ -95,10 +93,8 @@ class User extends CI_Controller {
       $photoChanged = intval($this->input->post('photo_changed'));
       if ($photoChanged == 1) {
         $config['upload_path'] = './userdata/'; 
-              $config['allowed_types'] = 'gif|jpg|png'; 
-              $config['max_size']      = 100; 
-              $config['max_width']     = 1024; 
-              $config['max_height']    = 768;  
+              $config['allowed_types'] = '*'; 
+              $config['max_size']      = 102400;
               $this->load->library('upload', $config);
               if ($this->upload->do_upload('file')) {
                 $this->db->where('id', $id);
